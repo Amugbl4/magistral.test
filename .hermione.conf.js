@@ -1,8 +1,8 @@
 module.exports = {
 
-    baseUrl: 'https://magistral.uplab.digital/',
-    screenshotDelay: 2000,
-    sessionsPerBrowser: 3,
+    baseUrl: 'https://nch-spb.com/',
+    screenshotDelay: 3000,
+    sessionsPerBrowser: 5,
     sets: {
         all: {
             files: 'test'
@@ -10,29 +10,29 @@ module.exports = {
     },
 
     browsers: {
-        chrome_1440: {
-            compositeImage: true,
-            windowSize: '2560x1440',
-            screenshotsDir: 'screen/chrome',
-            desiredCapabilities: {
-                browserName: 'chrome',
-                chromeOptions: {
-                    // args: ['--headless']
-                }
-            }
-        },
-
-        chrome_1920: {
-            compositeImage: true,
-            windowSize: '1920x1080',
-            screenshotsDir: 'screen/chrome',
-            desiredCapabilities: {
-                browserName: 'chrome',
-                chromeOptions: {
-                    // args: ['--headless']
-                }
-            }
-        },
+        // chrome_2k: {
+        //     compositeImage: true,
+        //     windowSize: '2560x1440',
+        //     screenshotsDir: 'screen/chrome',
+        //     desiredCapabilities: {
+        //         browserName: 'chrome',
+        //         chromeOptions: {
+        //             // args: ['--headless']
+        //         }
+        //     }
+        // },
+        //
+        // chrome_1920: {
+        //     compositeImage: true,
+        //     windowSize: '1920x1080',
+        //     screenshotsDir: 'screen/chrome',
+        //     desiredCapabilities: {
+        //         browserName: 'chrome',
+        //         chromeOptions: {
+        //             args: ['--headless']
+        //         }
+        //     }
+        // },
 
         chrome_1440: {
             compositeImage: true,
@@ -74,29 +74,29 @@ module.exports = {
         },
 
 
-        ie11_1920: {
-            compositeImage: true,
-            windowSize: '1920x1080',
-            screenshotsDir: 'screen/ie',
-            desiredCapabilities: {
-                browserName: 'internet explorer',
-                version: '11',
-                'ie.enableFullPageScreenshot': false
-            },
-
-        },
-
-
-        ie11_1440: {
-            compositeImage: true,
-            windowSize: '1440x900',
-            screenshotsDir: 'screen/ie/',
-            desiredCapabilities: {
-                browserName: 'internet explorer',
-                version: '11',
-                'ie.enableFullPageScreenshot': false
-            },
-        },
+        // ie11_1920: {
+        //     compositeImage: true,
+        //     windowSize: '1920x1080',
+        //     screenshotsDir: 'screen/ie',
+        //     desiredCapabilities: {
+        //         browserName: 'internet explorer',
+        //         version: '11',
+        //         'ie.enableFullPageScreenshot': false
+        //     },
+        //
+        // },
+        //
+        //
+        // ie11_1440: {
+        //     compositeImage: true,
+        //     windowSize: '1440x900',
+        //     screenshotsDir: 'screen/ie/',
+        //     desiredCapabilities: {
+        //         browserName: 'internet explorer',
+        //         version: '11',
+        //         'ie.enableFullPageScreenshot': false
+        //     },
+        // },
     },
 
     plugins: {
@@ -113,6 +113,19 @@ module.exports = {
 
 
     prepareBrowser: function (browser) {
-        browser.addCommand('clickIfAvailable', require('./custom-commands/clickIfAvailable'));
+        var _click = function clickIfAvailable(selector) {
+            var _this = this;
+
+            return this.element(selector).then(function (elem) {
+
+                if (!elem.value) {
+
+                    return false;
+                }
+
+                return _this.elementIdClick(elem.value.ELEMENT);
+            });
+        };
+        browser.addCommand('clickIfAvailable', _click);
     },
 };
