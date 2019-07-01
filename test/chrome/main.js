@@ -1,8 +1,8 @@
 const assert = require('chai').assert;
 
-const toggleClass = require('./functions/toggleClass');
-const swiperAutoPlayOff = require('./functions/swiperAutoPlayOff');
-const setStyle = require('./functions/setStyle');
+const toggleClass = require('../functions/toggleClass');
+const swiperAutoPlayOff = require('../functions/swiperAutoPlayOff');
+const setStyle = require('../functions/setStyle');
 
 describe('main page', function () {
     let browser;
@@ -17,7 +17,7 @@ describe('main page', function () {
             }, '.swiper-container')
             .waitForVisible('.preloader', 5000, true)
     });
-    // hermione.skip.in('mobile', 'not for mobile');
+
     it('header', function () {
         return browser
             .waitForVisible('.header', 3000)

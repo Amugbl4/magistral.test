@@ -1,13 +1,13 @@
 const assert = require('chai').assert;
 
-const toggleClass = require('./functions/toggleClass');
+const toggleClass = require('../functions/toggleClass');
 
-describe('main page', function () {
+describe('main page ie', function () {
     let browser;
     beforeEach(function () {
         browser = this.browser;
         browser
-            .url('/main.html')
+            .url('/')
             .execute(toggleClass, '.swiper-slide__img-bg', 'no-scale')
             .execute((el) => {
                 const element = document.querySelector(el);

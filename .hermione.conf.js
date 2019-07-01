@@ -1,11 +1,16 @@
 module.exports = {
 
-    baseUrl: 'https://nch-spb.com/',
+    baseUrl: 'https://magistral.uplab.digital/',
     screenshotDelay: 3000,
     sessionsPerBrowser: 5,
     sets: {
-        all: {
-            files: 'test'
+        chrome: {
+            files: 'test/chrome',
+            browsers: ['chrome_2k', 'chrome_1440', 'chrome_1920', 'mobile']
+        },
+        ie: {
+            files: 'test/ie',
+            browsers: ['ie11_1440', 'ie11_1920']
         }
     },
 
@@ -87,16 +92,16 @@ module.exports = {
         // },
         //
         //
-        // ie11_1440: {
-        //     compositeImage: true,
-        //     windowSize: '1440x900',
-        //     screenshotsDir: 'screen/ie/',
-        //     desiredCapabilities: {
-        //         browserName: 'internet explorer',
-        //         version: '11',
-        //         'ie.enableFullPageScreenshot': false
-        //     },
-        // },
+        ie11_1440: {
+            compositeImage: true,
+            windowSize: '1440x900',
+            screenshotsDir: 'screen/ie/',
+            desiredCapabilities: {
+                browserName: 'internet explorer',
+                version: '11',
+                'ie.enableFullPageScreenshot': false
+            },
+        },
     },
 
     plugins: {

@@ -1,4 +1,4 @@
-{
+  {
   "name": "hermione-one",
   "version": "1.0.0",
   "description": "",
@@ -19,7 +19,9 @@
     "selenium:start": "selenium-standalone start",
     "start": "npx npm-run-all --parallel selenium:start hermione:gui",
     "hermione": "node_modules/.bin/hermione",
-    "hermione:gui": "hermione gui"
+    "hermione:gui": "hermione --set chrome gui",
+    "hermione:gui-ie": "hermione --set ie gui",
+    "start-ie": "npx npm-run-all --parallel selenium:start hermione:gui-ie"
   },
   "author": "",
   "license": "ISC"
