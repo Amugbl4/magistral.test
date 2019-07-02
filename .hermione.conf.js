@@ -2,7 +2,7 @@ module.exports = {
 
     baseUrl: 'https://magistral.uplab.digital/',
     screenshotDelay: 3000,
-    sessionsPerBrowser: 5,
+    sessionsPerBrowser: 2,
     sets: {
         chrome: {
             files: 'test/chrome',
@@ -10,34 +10,34 @@ module.exports = {
         },
         ie: {
             files: 'test/ie',
-            browsers: ['ie11_1440', 'ie11_1920']
+            browsers: ['ie11_1440']
         }
     },
 
     browsers: {
-        // chrome_2k: {
-        //     compositeImage: true,
-        //     windowSize: '2560x1440',
-        //     screenshotsDir: 'screen/chrome',
-        //     desiredCapabilities: {
-        //         browserName: 'chrome',
-        //         chromeOptions: {
-        //             // args: ['--headless']
-        //         }
-        //     }
-        // },
-        //
-        // chrome_1920: {
-        //     compositeImage: true,
-        //     windowSize: '1920x1080',
-        //     screenshotsDir: 'screen/chrome',
-        //     desiredCapabilities: {
-        //         browserName: 'chrome',
-        //         chromeOptions: {
-        //             args: ['--headless']
-        //         }
-        //     }
-        // },
+        chrome_2k: {
+            compositeImage: true,
+            windowSize: '2560x1440',
+            screenshotsDir: 'screen/chrome',
+            desiredCapabilities: {
+                browserName: 'chrome',
+                chromeOptions: {
+                    args: ['--headless']
+                }
+            }
+        },
+
+        chrome_1920: {
+            compositeImage: true,
+            windowSize: '1920x1080',
+            screenshotsDir: 'screen/chrome',
+            desiredCapabilities: {
+                browserName: 'chrome',
+                chromeOptions: {
+                    args: ['--headless']
+                }
+            }
+        },
 
         chrome_1440: {
             compositeImage: true,
@@ -46,7 +46,7 @@ module.exports = {
             desiredCapabilities: {
                 browserName: 'chrome',
                 chromeOptions: {
-                    // args: ['--headless']
+                    args: ['--headless']
                 }
             }
         },

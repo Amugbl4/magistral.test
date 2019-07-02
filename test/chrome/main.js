@@ -1,7 +1,6 @@
 const assert = require('chai').assert;
 
 const toggleClass = require('../functions/toggleClass');
-const swiperAutoPlayOff = require('../functions/swiperAutoPlayOff');
 const setStyle = require('../functions/setStyle');
 
 describe('main page', function () {
@@ -10,33 +9,10 @@ describe('main page', function () {
         browser = this.browser;
         browser
             .url('/')
-            .execute(toggleClass, '.swiper-slide__img-bg', 'no-scale')
-            .execute((el) => {
-                const element = document.querySelector(el);
-                element.swiper.autoplay.stop();
-            }, '.swiper-container')
+            .execute(toggleClass, '.swiper-container', 'd-none')
             .waitForVisible('.preloader', 5000, true)
     });
 
-    it('header', function () {
-        return browser
-            .waitForVisible('.header', 3000)
-            .assertView('header-plain', '.header')
-    });
-
-    // it('project-info', function () {
-    //     return browser
-    //         .execute(toggleClass, '.header', 'd-none')
-    //         .scroll('.project__info')
-    //         .assertView('project-info', '.project__info')
-    // });
-
-    // it('text-with-btn', function () {
-    //     return browser
-    //         .execute(toggleClass, '.header', 'd-none')
-    //         .assertView('plain', '.content.user-text')
-    // });
-    // hermione.skip.in('mobile', 'not for mobile');
     it('mobile-app-block', function () {
         return browser
             .execute(toggleClass, '.header', 'd-none')
@@ -44,16 +20,57 @@ describe('main page', function () {
             .assertView('mobile-app', '.advertising')
     });
 
+    hermione.skip.in('mobile', 'not for mobile');
+    it('situation', function () {
+        return browser
+            .execute((el) => {
+                const element = document.querySelector(el);
+                element.swiper.autoplay.stop();
+            }, '.situation-slider')
+            .assertView('situation-block', '.situation')
+    });
+
+    hermione.skip.notIn('mobile', 'only for mobile');
+    it('situation-mob', function () {
+        return browser
+            .click('.situation')
+            .execute((el) => {
+                const element = document.querySelector(el);
+                element.swiper.autoplay.stop();
+            }, '.situation-slider')
+            .assertView('situation-block-block', '.situation')
+    });
+
+    it('blog-link', function () {
+        return browser
+            .assertView('blog-link-one', '.under-slider > a:nth-child(1)')
+    });
+
+    hermione.skip.in('mobile', 'not for mobile');
+    it('zsd-block', function () {
+        return browser
+            .execute(toggleClass, '.header', 'd-none')
+            .assertView('zsd-plain', '.zsd')
+    });
+
+    hermione.skip.in('mobile', 'not for mobile');
+    it('project-block', function () {
+        return browser
+            .execute(toggleClass, '.header', 'd-none')
+            .assertView('project-plain', '.project')
+    });
+
+
     it('news-card', function () {
         return browser
             .execute(toggleClass, '.header', 'd-none')
-            .assertView('news-card-one-plain', '.swiper-slide-active .news-card')
+            .assertView('news-card-one-plain', '.swiper-slide-active .news-card', {ignoreElements: '.news-card__img'})
     });
 
-    it('news-inner', function () {
+    it('news-block', function () {
         return browser
             .execute(toggleClass, '.header', 'd-none')
-            .assertView('news-inner-plain', '.news__inner')
+            .assertView('news-inner-plain', '.news')
     });
 
 });
