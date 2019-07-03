@@ -41,6 +41,7 @@ describe('main page', function () {
             .assertView('situation-block-block', '.situation')
     });
 
+    hermione.skip.in('mobile', 'not for mobile');
     it('blog-link', function () {
         return browser
             .assertView('blog-link-one', '.under-slider > a:nth-child(1)')
@@ -70,7 +71,7 @@ describe('main page', function () {
     it('news-block', function () {
         return browser
             .execute(toggleClass, '.header', 'd-none')
-            .assertView('news-inner-plain', '.news')
+            .assertView('news-inner-plain', '.news', {ignoreElements: '.news-card__img'})
     });
 
 });

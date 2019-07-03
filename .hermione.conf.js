@@ -22,7 +22,8 @@ module.exports = {
             desiredCapabilities: {
                 browserName: 'chrome',
                 chromeOptions: {
-                    args: ['--headless']
+                    args: ['--headless',
+                    '--hide-scrollbars']
                 }
             }
         },
@@ -34,7 +35,8 @@ module.exports = {
             desiredCapabilities: {
                 browserName: 'chrome',
                 chromeOptions: {
-                    args: ['--headless']
+                    args: ['--headless',
+                    '--hide-scrollbars']
                 }
             }
         },
@@ -46,7 +48,8 @@ module.exports = {
             desiredCapabilities: {
                 browserName: 'chrome',
                 chromeOptions: {
-                    args: ['--headless']
+                    args: ['--headless',
+                    '--hide-scrollbars']
                 }
             }
         },
@@ -73,25 +76,12 @@ module.exports = {
                            'Safari/602.1'
                        ].join(' ')
                     },
-                    args: ['--headless']
+                    args: ['--headless',
+                    '--hide-scrollbars']
                 }
             }
         },
 
-
-        // ie11_1920: {
-        //     compositeImage: true,
-        //     windowSize: '1920x1080',
-        //     screenshotsDir: 'screen/ie',
-        //     desiredCapabilities: {
-        //         browserName: 'internet explorer',
-        //         version: '11',
-        //         'ie.enableFullPageScreenshot': false
-        //     },
-        //
-        // },
-        //
-        //
         ie11_1440: {
             compositeImage: true,
             windowSize: '1440x900',
